@@ -7,6 +7,6 @@ public class PathCompleteEventHandler : MonoBehaviour {
 
     public void HandlePathComplete() {
         var entity = _controller.gameObject.GetEntityLink().entity;
-        entity.isOutOfScreen = true;
+        //entity.isOutOfScreen = true;
     }
 }

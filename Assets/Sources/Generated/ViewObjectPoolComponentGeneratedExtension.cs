@@ -17,13 +17,13 @@ namespace Entitas {
 
         public Entity AddViewObjectPool(Entitas.ObjectPool<UnityEngine.GameObject> newPool) {
             var component = CreateComponent<ViewObjectPoolComponent>(BulletsComponentIds.ViewObjectPool);
-            component.pool = newPool;
+            component.context = newPool;
             return AddComponent(BulletsComponentIds.ViewObjectPool, component);
         }
 
         public Entity ReplaceViewObjectPool(Entitas.ObjectPool<UnityEngine.GameObject> newPool) {
             var component = CreateComponent<ViewObjectPoolComponent>(BulletsComponentIds.ViewObjectPool);
-            component.pool = newPool;
+            component.context = newPool;
             ReplaceComponent(BulletsComponentIds.ViewObjectPool, component);
             return this;
         }

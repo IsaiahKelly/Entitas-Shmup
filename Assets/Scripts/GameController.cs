@@ -13,17 +13,16 @@ public class GameController : MonoBehaviour {
     }
 
     void Start() {
-
         GameRandom.core = new Rand(0);
         GameRandom.view = new Rand(0);
 
-        var pools = Pools.sharedInstance;
-        pools.SetAllPools();
-        pools.AddEntityIndices();
+        var contexts = Contexts.sharedInstance;
+        contexts.SetAllContexts();
+        contexts.AddEntityIndices();
 
-        pools.blueprints.SetBlueprints(blueprints);
+        contexts.blueprints.SetBlueprints(blueprints);
 
-        _systems = createSystems(pools);
+        _systems = createSystems(contexts);
 
         // Suggested systems lifecycle:
         // systems.Initialize() on Start
@@ -43,37 +42,38 @@ public class GameController : MonoBehaviour {
         _systems.TearDown();
     }
 
-    Systems createSystems(Pools pools) {
-        return new Feature("Systems")
+    Systems createSystems(Contexts contexts) {
+        return null;
+        //return new Feature("Systems")
 
-            // Initialize
-            .Add(pools.CreateSystem(new IncrementTickSystem()))
-            .Add(pools.CreateSystem(new CreatePlayerSystem()))
-            .Add(pools.CreateSystem(new CreateEnemySystem()))
+            // // Initialize
+            //.Add(contexts.CreateSystem(new IncrementTickSystem()))
+            //.Add(contexts.CreateSystem(new CreatePlayerSystem()))
+            //.Add(contexts.CreateSystem(new CreateEnemySystem()))
 
-            .Add(pools.core.CreateSystem(new AddViewSystem()))
-            .Add(pools.bullets.CreateSystem(new AddViewFromObjectPoolSystem()))
+            //.Add(contexts.core.CreateSystem(new AddViewSystem()))
+            //.Add(contexts.bullets.CreateSystem(new AddViewFromObjectcontextsystem()))
 
-            // Input
-            .Add(pools.CreateSystem(new InputSystem()))
-            .Add(pools.input.CreateSystem(new ProcessMoveInputSystem()))
-            .Add(pools.input.CreateSystem(new ProcessShootInputSystem()))
-            .Add(pools.input.CreateSystem(new ProcessCollisionSystem()))
-            .Add(pools.input.CreateSystem(new SlowMotionSystem()))
+            // // Input
+            //.Add(contexts.CreateSystem(new InputSystem()))
+            //.Add(contexts.input.CreateSystem(new ProcessMoveInputSystem()))
+            //.Add(contexts.input.CreateSystem(new ProcessShootInputSystem()))
+            //.Add(contexts.input.CreateSystem(new ProcessCollisionSystem()))
+            //.Add(contexts.input.CreateSystem(new SlowMotionSystem()))
 
-            // Update
-            .Add(pools.core.CreateSystem(new BulletCoolDownSystem()))
-            .Add(pools.core.CreateSystem(new StartEnemyWaveSystem()))
-            .Add(pools.CreateSystem(new VelocitySystem()))
-            .Add(pools.CreateSystem(new RenderPositionSystem()))
-            .Add(pools.core.CreateSystem(new CheckHealthSystem()))
-            .Add(pools.bullets.CreateSystem(new BulletOutOfScreenSystem()))
+            // // Update
+            //.Add(contexts.core.CreateSystem(new BulletCoolDownSystem()))
+            //.Add(contexts.core.CreateSystem(new StartEnemyWaveSystem()))
+            //.Add(contexts.CreateSystem(new VelocitySystem()))
+            //.Add(contexts.CreateSystem(new RenderPositionSystem()))
+            //.Add(contexts.core.CreateSystem(new CheckHealthSystem()))
+            //.Add(contexts.bullets.CreateSystem(new BulletOutOfScreenSystem()))
 
-            // Animate Destroy
-            .Add(pools.CreateSystem(new AnimateOutOfScreenViewSystem()))
-            .Add(pools.CreateSystem(new AnimateDestroyViewSystem()))
+            // // Animate Destroy
+            //.Add(contexts.CreateSystem(new AnimateOutOfScreenViewSystem()))
+            //.Add(contexts.CreateSystem(new AnimateDestroyViewSystem()))
 
-            // Destroy
-            .Add(pools.CreateSystem(new DestroyEntitySystem()));
+            // // Destroy
+            //.Add(contexts.CreateSystem(new DestroyEntitySystem()));
     }
 }

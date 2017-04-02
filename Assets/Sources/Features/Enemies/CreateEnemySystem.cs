@@ -1,19 +1,20 @@
 ﻿using Entitas;
 
-public sealed class CreateEnemySystem : ISetPools, IExecuteSystem {
+//public sealed class CreateEnemySystem : ISetPools, IExecuteSystem {
+public sealed class CreateEnemySystem : IExecuteSystem {
 
-    Pools _pools;
+    Contexts _contexts;
 
-    public void SetPools(Pools pools) {
-        _pools = pools;
+    public void SetPools(Contexts contexts) {
+        _contexts = contexts;
     }
 
     public void Execute() {
 
         // TODO Interval should be configurable
-        if(_pools.input.tick.value % 60 == 0) {
-            _pools.blueprints.blueprints.instance
-                  .ApplyEnemy(_pools.core.CreateEntity());
+        if(_contexts.input.tick.value % 60 == 0) {
+            _contexts.blueprints.blueprints.instance
+                  .ApplyEnemy(_contexts.core.CreateEntity());
         }
     }
 }

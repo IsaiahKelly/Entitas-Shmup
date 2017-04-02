@@ -1,16 +1,16 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public sealed class CreatePlayerSystem : ISetPools, IInitializeSystem {
+//public sealed class CreatePlayerSystem : ISetPools, IInitializeSystem {
+public sealed class CreatePlayerSystem : IInitializeSystem {
+    Contexts _context;
 
-    Pools _pools;
-
-    public void SetPools(Pools pools) {
-        _pools = pools;
-    }
+    //public void SetPools(Contexts contexts) {
+    //    _context = contexts;
+    //}
 
     public void Initialize() {
-        _pools.blueprints.blueprints.instance
-              .ApplyPlayer1(_pools.core.CreateEntity(), Vector3.zero);
+        _context.blueprints.blueprints.instance
+              .ApplyPlayer1(_context.core.CreateEntity(), Vector3.zero);
     }
 }

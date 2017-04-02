@@ -1,19 +1,20 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public sealed class InputSystem : ISetPools, IExecuteSystem, ICleanupSystem {
+//public sealed class InputSystem : ISetPools, IExecuteSystem, ICleanupSystem {
+public sealed class InputSystem : IExecuteSystem, ICleanupSystem {
 
     const string PLAYER1_ID = "Player1";
 
-    Pools _pools;
+    Contexts _pools;
     Group _moveInputs;
     Group _shootInputs;
 
-    public void SetPools(Pools pools) {
-        _pools = pools;
-        _moveInputs = pools.input.GetGroup(InputMatcher.MoveInput);
-        _shootInputs = pools.input.GetGroup(InputMatcher.ShootInput);
-    }
+    //public void SetPools(Contexts contexts) {
+    //    _pools = contexts;
+    //    _moveInputs = contexts.input.GetGroup(InputMatcher.MoveInput);
+    //    _shootInputs = contexts.input.GetGroup(InputMatcher.ShootInput);
+    //}
 
     public void Execute() {
         var moveX = Input.GetAxisRaw("Horizontal");

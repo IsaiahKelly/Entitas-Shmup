@@ -2,13 +2,14 @@
 
 
 // TODO Unit Test
-public sealed class BulletCoolDownSystem : ISetPools, IExecuteSystem {
+//public sealed class BulletCoolDownSystem : ISetPools, IExecuteSystem {
+public sealed class BulletCoolDownSystem : IExecuteSystem {
 
     Group _coolDowns;
 
-    public void SetPools(Pools pools) {
-        _coolDowns = pools.core.GetGroup(CoreMatcher.BulletCoolDown);
-    }
+    //public void SetPools(Contexts contexts) {
+    //    _coolDowns = contexts.core.GetGroup(CoreMatcher.BulletCoolDown);
+    //}
 
     public void Execute() {
         foreach(var e in _coolDowns.GetEntities()) {

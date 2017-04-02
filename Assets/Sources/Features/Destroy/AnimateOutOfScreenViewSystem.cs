@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using Entitas;
 
-public sealed class AnimateOutOfScreenViewSystem : ISetPools, IEntityCollectorSystem {
+//public sealed class AnimateOutOfScreenViewSystem : ISetPools, IEntityCollectorSystem {
+public sealed class AnimateOutOfScreenViewSystem {
+    public Collector entityCollector { get { return _groupObserver; } }
 
-    public EntityCollector entityCollector { get { return _groupObserver; } }
+    Collector _groupObserver;
 
-    EntityCollector _groupObserver;
-
-    public void SetPools(Pools pools) {
-        _groupObserver = new [] { pools.core, pools.bullets }
-            .CreateEntityCollector(Matcher.AllOf(CoreMatcher.View, CoreMatcher.OutOfScreen));
+    public void SetPools(Contexts contexts) {
+        //_groupObserver = new [] { contexts.core, contexts.bullets }
+            //.CreateEntityCollector(Matcher.AllOf(CoreMatcher.View, CoreMatcher.OutOfScreen));
     }
 
     public void Execute(List<Entity> entities) {

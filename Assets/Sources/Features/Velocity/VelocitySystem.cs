@@ -1,16 +1,16 @@
 ﻿using Entitas;
 
-public sealed class VelocitySystem : ISetPools, IExecuteSystem {
-
+//public sealed class VelocitySystem : ISetPools, IExecuteSystem {
+public sealed class VelocitySystem : IExecuteSystem {
     Group[] _movableGroups;
 
-    public void SetPools(Pools pools) {
-        var matcher = Matcher.AllOf(CoreMatcher.Velocity, CoreMatcher.Position);
-        _movableGroups = new [] {
-            pools.core.GetGroup(matcher),
-            pools.bullets.GetGroup(matcher)
-        };
-    }
+    //public void SetPools(Contexts contexts) {
+    //    var matcher = Matcher.AllOf(CoreMatcher.Velocity, CoreMatcher.Position);
+    //    _movableGroups = new[] {
+    //        contexts.core.GetGroup(matcher),
+    //        contexts.bullets.GetGroup(matcher)
+    //    };
+    //}
 
     public void Execute() {
         foreach(var group in _movableGroups) {

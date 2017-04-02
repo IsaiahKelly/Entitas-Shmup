@@ -4,5 +4,5 @@ using UnityEngine;
 [Core, Bullets]
 public sealed class ViewObjectPoolComponent : IComponent {
 
-    public ObjectPool<GameObject> pool;
+    public ObjectPool<GameObject> context;
 }
